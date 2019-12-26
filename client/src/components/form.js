@@ -4,7 +4,8 @@ class Form extends Component {
     super();
     this.state = {
       name: "Fulano",
-      email: "constato@fulano.com.br"
+      email: "constato@fulano.com.br",
+      message: "Lorem ipusun dornec uhadf lsaodfi daf asdj fsd ipusun "
     };
   }
 
@@ -14,6 +15,10 @@ class Form extends Component {
 
   handleEmailChange = event => {
     this.setState({ email: event.target.value });
+  };
+
+  handleTextareaChange = event => {
+    this.setState({ message: event.target.value });
   };
 
   handleSubmit = event => {
@@ -37,11 +42,19 @@ class Form extends Component {
             onChange={this.handleNameChange}
             value={this.state.name}
           />
+          <br />
+
           <input
             type="text"
             onChange={this.handleEmailChange}
             value={this.state.email}
           />
+          <br />
+          <textarea
+            value={this.state.message}
+            onChange={this.handleTextareaChange}
+          ></textarea>
+          <br />
 
           <button type="submit">Submit</button>
         </form>
