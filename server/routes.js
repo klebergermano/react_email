@@ -20,25 +20,41 @@ app.post("/form", async (req, res, next) => {
   async function main() {
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
-    let testAccount = await nodemailer.createTestAccount();
+    let testAccount = await nodemailer.createTestAccount(); //////////////////////////////////// */
 
-    // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-      host: "smtp.ethereal.email",
-      port: 587,
+    accountEmail = {
+      user: testAccount.user,
+      pass: testAccount.pass
+    };
+
+    configSMTP = {
+      host: "smtp.ethereal.email", //smtp host of your email service
+      port: 587
+    };
+
+    const infoEmail = {
+      from: '"Website form contact" <contact@website.com>', // sender address
+      to: " <bar@example.com>, <baz@example.com> ", // list of receivers
+      subject: "New contact from the website",
+      text: ""
+    }; //////////////////////////////////// */ // create reusable transporter object using the default SMTP transport
+
+    /**/ let transporter = nodemailer.createTransport({
+      host: configSMTP.host,
+      port: configSMTP.port,
       secure: false, // true for 465, false for other ports
       auth: {
-        user: testAccount.user, // generated ethereal user
-        pass: testAccount.pass // generated ethereal password
+        user: accountEmail.user, // generated ethereal user
+        pass: accountEmail.pass // generated ethereal password
       }
     });
 
     // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: '"Site Contact 👻" <foo@example.com>', // sender address
-      to: "bar@example.com, baz@example.com", // list of receivers
-      subject: "Hello ✔", // Subject line
-      text: "Hello world?", // plain text body
+      from: infoEmail.from, // sender address
+      to: infoEmail.to, // list of receivers
+      subject: infoEmail.subject, // Subject line
+      // text: "Hello world?", // plain text body
       html: msg_html // html body
     });
 
