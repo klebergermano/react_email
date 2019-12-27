@@ -1,6 +1,6 @@
 const configNodemailer = {
   account: {
-    user: "you_email_user@email.com",
+    user: "your_email_user@example.com",
     pass: "your_email_password"
   },
   smtp: {
