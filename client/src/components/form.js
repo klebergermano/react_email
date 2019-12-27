@@ -41,30 +41,46 @@ class Form extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            onChange={this.handleNameChange}
-            value={this.state.name}
-          />
-          <br />
-          <input
-            type="text"
-            onChange={this.handleEmailChange}
-            value={this.state.email}
-          />
-          <br />
-          <input
-            type="text"
-            onChange={this.handleSubjectChange}
-            value={this.state.subject}
-          />
-          <br />
-          <textarea
-            value={this.state.message}
-            onChange={this.handleTextareaChange}
-          ></textarea>
-          <br />
+        <form id="contact_form" onSubmit={this.handleSubmit}>
+          <div>
+            <label>Name: </label>
+            <input
+              type="text"
+              onChange={this.handleNameChange}
+              value={this.state.name}
+            />
+          </div>
+          <div>
+            <label>Phone: </label>
+            <input
+              type="text"
+              onChange={this.handleNameChange}
+              value={this.state.name}
+            />
+          </div>
+          <div>
+            <label>Email: </label>
+            <input
+              type="email"
+              onChange={this.handleEmailChange}
+              value={this.state.email}
+            />
+          </div>
+          <div>
+            <label>Subject: </label>
+            <input
+              type="text"
+              onChange={this.handleSubjectChange}
+              value={this.state.subject}
+            />
+          </div>
+          <div>
+            <label>Message</label>
+            <textarea
+              value={this.state.message}
+              onChange={this.handleTextareaChange}
+            ></textarea>
+          </div>
           <button type="submit">Submit</button>
         </form>
       </div>
