@@ -3,9 +3,10 @@ class Form extends Component {
   constructor() {
     super();
     this.state = {
-      name: "Fulano",
-      email: "constato@fulano.com.br",
-      message: "Lorem ipusun dornec uhadf lsaodfi daf asdj fsd ipusun "
+      name: "",
+      email: "",
+      subject: "",
+      message: ""
     };
   }
 
@@ -15,6 +16,10 @@ class Form extends Component {
 
   handleEmailChange = event => {
     this.setState({ email: event.target.value });
+  };
+
+  handleSubjectChange = event => {
+    this.setState({ subject: event.target.value });
   };
 
   handleTextareaChange = event => {
@@ -48,6 +53,13 @@ class Form extends Component {
             type="text"
             onChange={this.handleEmailChange}
             value={this.state.email}
+          />
+          <br />
+
+          <input
+            type="text"
+            onChange={this.handleSubjectChange}
+            value={this.state.subject}
           />
           <br />
           <textarea
