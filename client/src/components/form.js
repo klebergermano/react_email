@@ -48,14 +48,12 @@ class Form extends Component {
             value={this.state.name}
           />
           <br />
-
           <input
             type="text"
             onChange={this.handleEmailChange}
             value={this.state.email}
           />
           <br />
-
           <input
             type="text"
             onChange={this.handleSubjectChange}
@@ -67,7 +65,6 @@ class Form extends Component {
             onChange={this.handleTextareaChange}
           ></textarea>
           <br />
-
           <button type="submit">Submit</button>
         </form>
       </div>
