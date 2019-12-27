@@ -30,7 +30,7 @@ Then run de **Node Server** and the **React Client** with
 npm run dev
 ```
 
-\* Was necessary remove the "\_example" from the "_configNodemailer_example.js_" to conrrectly import it to sendNodemailer.js
+\* Is necessary remove the "\_example" from the "_configNodemailer_example.js_" to conrrectly import it to sendNodemailer.js
 
 \* Also don't forget to put your own config information in "server/nodemailer/configNodemailer.js"
 
