@@ -14,5 +14,5 @@ const configNodemailer = {
     subject: "New contact from the website"
   }
 };
-
+//Exports the configNodemailer to be used in sendNodemailer.js 
 module.exports = configNodemailer;
