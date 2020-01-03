@@ -1,5 +1,8 @@
-function sendNodemailer(msg_html) {
+function sendNodemailer(msg_html, callback) {
   const nodemailer = require("nodemailer"); //require nodemailer module installed
+  const express = require("express");
+
+  const app = express.Router();
 
   /*config of nodemailer in a single object //to import remove the '_example' from configNodemailer_example or
  create a new folder call configNodemailer.js with a object config for nodemailer*/
@@ -20,20 +23,28 @@ function sendNodemailer(msg_html) {
       }
     });
 
-    // send mail with defined transport object
-    let info = await transporter.sendMail({
+    // setup e-mail data with unicode symbols
+    var mailOptions = {
       from: configNodemailer.info.from, // sender address
       to: configNodemailer.info.to, // list of receivers
       subject: configNodemailer.info.subject, // Subject line
       html: msg_html // html body
       //text: "Hello world?", // plain text body// alternative to html message
-    });
+    };
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function(error, info) {
+      if (error) {
+        console.log(error);
 
-    console.log("Message sent: %s", info.messageId);
-    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+        return callback("Sorry, your message couldn't be sent");
+      } else {
+        console.log("Message sent: " + info.response);
+        return callback("Your message was sent successfully");
+      }
+    });
   }
 
-  main().catch(console.error);
+  main();
 }
 
 module.exports = sendNodemailer;

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 class Form extends Component {
   constructor() {
     super();
@@ -6,10 +7,11 @@ class Form extends Component {
       name: "",
       email: "",
       subject: "",
-      message: ""
+      message: "",
+      msg_send: ""
     };
   }
-
+  componentDidMount() {}
   handleNameChange = event => {
     this.setState({ name: event.target.value });
   };
@@ -28,13 +30,18 @@ class Form extends Component {
 
   handleSubmit = event => {
     const data = this.state;
-    fetch("/form", {
+    fetch("/form_send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
-    });
+    })
+      .then(res => res.text())
+      .then(text => {
+        this.setState({ msg_send: text });
+      });
+
     event.preventDefault();
   };
 
@@ -42,6 +49,7 @@ class Form extends Component {
     return (
       <div>
         <form id="contact_form" onSubmit={this.handleSubmit}>
+          <p>{this.state.msg_send}</p>
           <div>
             <label>Name: </label>
             <input
@@ -50,14 +58,7 @@ class Form extends Component {
               value={this.state.name}
             />
           </div>
-          <div>
-            <label>Phone: </label>
-            <input
-              type="text"
-              onChange={this.handleNameChange}
-              value={this.state.name}
-            />
-          </div>
+
           <div>
             <label>Email: </label>
             <input
