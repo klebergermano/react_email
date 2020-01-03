@@ -35,3 +35,5 @@ npm run dev
 \* Also don't forget to put your own config information in "server/nodemailer/configNodemailer.js"
 
 Nodemaler was configured using the example configuration with some adjusts see the original example here [Nodemailer Example](https://nodemailer.com/about/)
+
+If you have some problems with GMAIL please read Nodemailer [USING GMAIL](https://nodemailer.com/usage/using-gmail/)
