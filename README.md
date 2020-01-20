@@ -1,4 +1,4 @@
-# React Email Nodemailer
+# React.js Email Nodemailer
 
 This is a basic project with React, Express and Nodemailer configured to send emails
 
